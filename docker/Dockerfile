@@ -3,7 +3,7 @@ FROM ubuntu
 RUN apt update && apt install -y curl unzip lighttpd
 RUN mkdir -p /opt
 
-#RUN curl --output xonotic-latest.zip $(curl https://www.xonotic.org/download/ | grep 'Download as zip' | sed -E 's/.+ href="([^"]+)".+/\1/g')
+#RUN curl --output /opt/xonotic-latest.zip $(curl https://www.xonotic.org/download/ | grep 'Download as zip' | sed -E 's/.+ href="([^"]+)".+/\1/g')
 COPY xonotic-0.8.2.zip /opt/xonotic-latest.zip
 
 RUN cd /opt && unzip xonotic-latest.zip
