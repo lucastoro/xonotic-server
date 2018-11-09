@@ -1,0 +1,2 @@
+docker run --rm -it -p 8080:80 -p 26000:26000/udp --entrypoint /bin/bash -v $PWD:/opt/Xonotic/shared xonotic-server
+
