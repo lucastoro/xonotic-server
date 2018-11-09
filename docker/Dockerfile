@@ -11,6 +11,6 @@ RUN rm /opt/xonotic-latest.zip
 RUN mkdir /opt/Xonotic/shared
 COPY start-server.sh /opt/Xonotic/start-server.sh
 COPY lighttpd.conf /etc/lighttpd/
-EXPOSE 8080/tcp
+EXPOSE 26000/tcp
 EXPOSE 26000/udp
 ENTRYPOINT ["/bin/bash", "/opt/Xonotic/start-server.sh"]
