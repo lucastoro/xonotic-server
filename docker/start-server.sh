@@ -6,11 +6,22 @@
   exit 1
 }
 
-[ -e /opt/Xonotic/data/server.cfg ] || {
-  cd /opt/Xonotic/data
-  ln -s ../shared/server.cfg .
+echo 'copying server.cfg...'
+cp /opt/Xonotic/shared/server.cfg /opt/Xonotic/data/
+
+[ -d /opt/Xonotic/shared/maps ] && {
+  echo 'copying maps...'
+  for file in /opt/Xonotic/shared/maps/*.pk3; do
+    echo " - $(basename $file)"
+    cp $file /opt/Xonotic/data
+  done
 }
 
 cd /opt/Xonotic/server
+echo 'starting http server...'
 lighttpd -f /etc/lighttpd/lighttpd.conf
-./server_linux.sh
+echo 'starting nginx server...'
+./server_linux.sh >> /opt/Xonotic/shared/server.log
+echo 'stopping the http server...'
+kill $(pidof lighttpd)
+echo 'shutting down'

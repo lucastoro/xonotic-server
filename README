@@ -1,2 +1,9 @@
-docker run --rm -it -p 8080:80 -p 26000:26000/udp --entrypoint /bin/bash -v $PWD:/opt/Xonotic/shared xonotic-server
+# A Xonotic server docker container with map provisioning via http.
 
+Build the container with (from within the docker subdirectory)
+`docker build -t xonotic-server ./docker`
+
+Run the container with
+`docker run --rm -it -p 8080:80 -p 26000:26000/udp --entrypoint /bin/bash -v $PWD:/opt/Xonotic/shared xonotic-server`
+
+A work in progress, you need to share a folder containing you `server.cfg` file and a `maps` subdirectory with the maps you want to provide.

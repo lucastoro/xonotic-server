@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker run --rm -it -p 26000:80/tcp -p 26000:26000/udp -v $PWD:/opt/Xonotic/shared "${@}" xonotic-server
